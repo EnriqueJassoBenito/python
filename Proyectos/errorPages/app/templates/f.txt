@@ -1,0 +1,43 @@
+<script>
+      let i = 1; // Inicializamos el contador fuera de la función, para que persista entre llamadas
+
+      function loadCards() {
+        if (i <= 10) {
+          // Aseguramos que el contador no pase de 10
+          var object = {
+            titulo: "Card " + i,
+            descripcion: "Texto de la Card " + i,
+          };
+
+          console.log("Acabas de scrollear hasta abajo");
+
+          var contenedor = document.createElement("div");
+          contenedor.setAttribute("class", "card");
+          contenedor.setAttribute("style", "width: 18rem;"); // Corregí el error tipográfico "with" -> "width"
+
+          var body = document.createElement("div");
+          body.setAttribute("class", "card-body");
+
+          var h5 = document.createElement("h5");
+          h5.setAttribute("class", "card-title");
+          h5.innerHTML = object.titulo;
+
+          var p = document.createElement("p");
+          p.setAttribute("class", "card-text");
+          p.innerHTML = object.descripcion;
+
+          body.appendChild(h5);
+          body.appendChild(p);
+          contenedor.appendChild(body);
+
+          document.getElementById("tarjetas").appendChild(contenedor);
+
+          i++; // Incrementamos el contador para la siguiente tarjeta
+        }
+      }
+
+      window.addEventListener("scroll", () => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+          loadCards();
+        }
+      });
