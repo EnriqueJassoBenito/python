@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ver Categorias</h1>
+    <ul>
+        {% for categoria in categorias %}
+        <li>
+            <strong>{{ categoria.nombre }}</strong>
+            <img width="100" src="{{ categoria.imagen}}" alt="img" />
+
+        </li>
+        <!-- Si mi objeto esta vacio puedo: -->
+        {% empty %}
+        <li>No hay productos que mostrar</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
